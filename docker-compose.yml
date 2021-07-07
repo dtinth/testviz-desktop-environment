@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  desktop:
+    build:
+      context: desktop
+    ipc: host
+    environment:
+      RESOLUTION: 1680x1080
+      USER: desktop
+    ports:
+      - 127.0.0.1:6080:80
+      - 127.0.0.1:5900:5900
+    volumes:
+      - ./data:/mnt/data
+      - ./tools:/mnt/tools:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    networks:
+      default:
+      mediawiki:
+        aliases:
+          - desktop
+    privileged: true
+networks:
+  mediawiki:
+    external: true
+    name: mediawiki_default
