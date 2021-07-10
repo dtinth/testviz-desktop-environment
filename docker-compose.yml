@@ -5,7 +5,7 @@ services:
       context: desktop
     ipc: host
     environment:
-      RESOLUTION: 1680x1080
+      RESOLUTION: 1440x1080
       USER: desktop
     ports:
       - 127.0.0.1:6080:80
